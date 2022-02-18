@@ -10,7 +10,7 @@ git clone {ur}
 composer install
 ```
 
-# Copy, rename and paste .env.example to .env
+### Copy, rename and paste .env.example to .env
 
 ```
 IDENTIFY_CLIENT_ID={client_id}
