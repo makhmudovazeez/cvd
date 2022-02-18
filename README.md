@@ -14,11 +14,11 @@ Install dependencies
 composer install
 ````
 
-Configure env.example
+#####Configure .env by copying and renaming .env.example
 
-Generate jwt token
+Run artisan command in terminal for generating key
 
-```` 
+````
 php artisan key:generate
 ````
 
