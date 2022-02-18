@@ -18,3 +18,8 @@ IDENTIFY_CLIENT_SECRET={client_secret}
 SINGLE_SIGN_ON={single_sign_on_url}
 HUMAN_RESOURCE_MANAGEMENT={human_resource_management_url}
 ```
+
+### Run artisan command in terminal
+```
+php artisan optimize
+```
