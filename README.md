@@ -1,4 +1,4 @@
-<p align="center"><a href="https://cvd.ssv.uz" target="_blank">Author: Makhmudov Azizbek <azeezmakhmudov@gmail.com></a></p>
+# <p align="center"><a href="https://cvd.ssv.uz" target="_blank"> cvd.ssv.uz <azeezmakhmudov@gmail.com></a></p>
 
 ## Azbo project
 
