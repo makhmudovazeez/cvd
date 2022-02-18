@@ -1,25 +1,22 @@
-<p align="center">cvd.ssv.uz</p>
+<p align="center"><a href="https://cvd.ssv.uz" target="_blank">Author: Makhmudov Azizbek <azeezmakhmudov@gmail.com></a></p>
 
-## Clone Project
-```
-git clone {ur}
-```
+## Azbo project
 
-## Install dependencis
-```
+Clone the project
+```` 
+git clone https://github.com/makhmudovazeez/azbo_laravel8.git
+````
+
+Install dependencies
+```` 
 composer install
-```
+````
 
-### Copy, rename and paste .env.example to .env
+Configure env.example
 
-```
-IDENTIFY_CLIENT_ID={client_id}
-IDENTIFY_CLIENT_SECRET={client_secret}
-SINGLE_SIGN_ON={single_sign_on_url}
-HUMAN_RESOURCE_MANAGEMENT={human_resource_management_url}
-```
+Generate jwt token
 
-### Run artisan command in terminal
-```
-php artisan optimize
-```
+```` 
+php artisan key:generate
+````
+
