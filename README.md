@@ -1,6 +1,8 @@
 # <p align="center"><a href="https://cvd.ssv.uz" target="_blank"> cvd.ssv.uz </a></p>
 
-### <sub>Author: Makhmudov Azizbek <azeezmakhmudov@gmail.com></sub>
+### <sub align="center">Author: 
+    <a href="https://github.com/makhmudovazeez">Makhmudov Azizbek</a>
+    <azeezmakhmudov@gmail.com></sub>
 
 ## Azbo project
 
