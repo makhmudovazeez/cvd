@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthorizationRequest;
 use App\Http\Requests\RefreshTokenRequest;
 use App\Services\AuthorizationService;
+use App\Services\UserService;
+use App\Traits\TokenCredentials;
 
 /**
  * Class AuthorizationController
@@ -13,12 +15,16 @@ use App\Services\AuthorizationService;
 
 final class AuthorizationController extends Controller
 {
+    use TokenCredentials;
+
     /** @var AuthorizationService */
     private $authorizationService;
+    private $userService;
 
-    public function __construct(AuthorizationService $authorizationService)
+    public function __construct(AuthorizationService $authorizationService, UserService $userService)
     {
         $this->authorizationService = $authorizationService;
+        $this->userService = $userService;
     }
 
     /**
@@ -27,6 +33,11 @@ final class AuthorizationController extends Controller
      */
     public function login(AuthorizationRequest $request){
         $data = $this->authorizationService->getToken($request->only('username', 'password'));
+        $user = [];
+        if (isset($data['access_token'])){
+            $user = $this->responseToken($data['access_token']);
+            $data = array_merge(['user' => $user], $data);
+        }
         return response()->json($data);
     }
 
@@ -36,6 +47,12 @@ final class AuthorizationController extends Controller
      */
     public function refreshToken(RefreshTokenRequest $request){
         $data = $this->authorizationService->refreshToken($request->refresh_token);
+
+        $user = [];
+        if (isset($data['access_token'])){
+            $user = $this->responseToken($data['access_token']);
+            $data = array_merge(['user' => $user], $data);
+        }
         return response()->json($data);
     }
 }

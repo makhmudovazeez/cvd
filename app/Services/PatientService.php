@@ -28,8 +28,21 @@ class PatientService implements ServiceInterface
     }
 
     public function store(): Patient{
+        DB::beginTransaction();
         try {
 
+            DB::commit();
+        }catch (\Exception $exception){
+            DB::rollBack();
+            throw new \Exception($exception->getMessage());
+        }
+    }
+
+    public function update(Patient $patient): Patient{
+        DB::beginTransaction();
+        try {
+
+            DB::commit();
         }catch (\Exception $exception){
             DB::rollBack();
             throw new \Exception($exception->getMessage());

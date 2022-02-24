@@ -27,23 +27,29 @@ Route::group([
 
 
 
-    /* Organization routes begin */
     $router->group([
-        'prefix' => 'organization'
-    ], function (Router $router) {
-        $router->get('', [OrganizationController::class, 'index']);
-        $router->get('{id}', [OrganizationController::class, 'show']);
+        'middleware' => 'access.token'
+    ], function (Router $router){
+
+        /* Organization routes begin */
+        $router->group([
+            'prefix' => 'organization'
+        ], function (Router $router) {
+            $router->get('', [OrganizationController::class, 'index']);
+            $router->get('{id}', [OrganizationController::class, 'show']);
+        });
+        /* Organization routes end */
+
+
+
+        /* Employee routes begin */
+        $router->group([
+            'prefix' => 'employee'
+        ], function (Router $router) {
+            $router->get('', [EmployeeController::class, 'index']);
+            $router->get('{id}', [EmployeeController::class, 'show']);
+        });
+        /* Employee routes end */
+
     });
-    /* Organization routes end */
-
-
-
-    /* Employee routes begin */
-    $router->group([
-        'prefix' => 'employee'
-    ], function (Router $router) {
-        $router->get('', [EmployeeController::class, 'index']);
-        $router->get('{id}', [EmployeeController::class, 'show']);
-    });
-    /* Employee routes end */
 });

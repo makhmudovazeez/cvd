@@ -22,6 +22,8 @@ final class EmployeeService extends ApiItems implements ServiceInterface
      */
     public function findAll(array $filter): array
     {
+        dd(Http::contentType(self::APPLICATION_JSON)->accept(self::APPLICATION_JSON)
+            ->get(config('urls.hrm_employee'), $filter)->json());
         return Http::contentType(self::APPLICATION_JSON)->accept(self::APPLICATION_JSON)
             ->get(config('urls.hrm_employee'), $filter)->json();
     }

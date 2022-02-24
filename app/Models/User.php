@@ -24,4 +24,7 @@ class User extends Authenticatable
      */
     protected $guarded = [];
 
+    protected $hidden = [
+        'created_by', 'updated_by', 'uuid', 'deleted_at'
+    ];
 }

@@ -2,13 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Traits\TokenCredentials;
 use Closure;
 use Illuminate\Http\Request;
 
-class AccessToken
+class Localization
 {
-    use TokenCredentials;
     /**
      * Handle an incoming request.
      *
@@ -18,9 +16,7 @@ class AccessToken
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->requestToken()){
-            return $next($request);
-        }
-        return response()->json('lol');
+        dd(last($request->segments()), $request->url());
+        return $next($request);
     }
 }
