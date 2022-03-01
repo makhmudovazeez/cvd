@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\EmployeeCollection;
 use App\Services\EmployeeService;
 
 /**
@@ -34,6 +33,6 @@ final class EmployeeController extends Controller
      */
     public function show(int $id){
         $employee = $this->employeeService->findOne($id);
-        return response()->json(EmployeeCollection::collection($employee));
+        return response()->json($employee);
     }
 }
