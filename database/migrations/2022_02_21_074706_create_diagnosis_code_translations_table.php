@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTreatmentTypesTable extends Migration
+class CreateDiagnosisCodeTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateTreatmentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('treatment_types', function (Blueprint $table) {
+        Schema::create('diagnosis_code_translations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('diagnosis_code_id')->constrained('diagnosis_codes');
+            $table->string('locale', 10);
+            $table->text('name');
+            $table->string('name_soundex')->nullable();
+
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
             $table->softDeletes();
@@ -29,6 +34,6 @@ class CreateTreatmentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('treatment_types');
+        Schema::dropIfExists('diagnosis_translations');
     }
 }

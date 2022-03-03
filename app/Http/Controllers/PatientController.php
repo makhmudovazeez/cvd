@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PatientCreateRequest;
+use App\Http\Requests\PatientUpdateRequest;
 use App\Models\Patient;
 use App\Services\PatientService;
-use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
@@ -27,10 +28,11 @@ class PatientController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(PatientCreateRequest $request)
     {
         try {
             $patient = $this->patientService->store();
+            return response()->json(['data' => $patient]);
         }catch (\Throwable $exception){
             return response()->json(['error' => $exception->getMessage()]);
         }
@@ -46,7 +48,7 @@ class PatientController extends Controller
         return response()->json(['data' => $patient]);
     }
 
-    public function update(Request $request, Patient $patient)
+    public function update(PatientUpdateRequest $request, Patient $patient)
     {
         try {
             $patient = $this->patientService->store();

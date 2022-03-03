@@ -15,12 +15,14 @@ class CreateCityTranslationsTable extends Migration
     {
         Schema::create('city_translations', function (Blueprint $table) {
             $table->id();
+
             $table->string('locale', 10);
             $table->string('name');
 
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
             $table->softDeletes();
+
             $table->timestamps();
         });
     }

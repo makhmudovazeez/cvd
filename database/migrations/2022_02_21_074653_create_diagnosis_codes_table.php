@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateDiagnosisCodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('diagnosis_codes', function (Blueprint $table) {
             $table->id();
-
-            $table->uuid('uuid')->nullable()->unique();
+            $table->unsignedBigInteger('secondary_id');
+            $table->foreignId('parent_id')->constrained('diagnosis_codes');
+            $table->boolean('active')->default(true);
+            $table->string('code');
+            $table->integer('level');
+            $table->boolean('is_last_level');
 
             $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->softDeletes();
-
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('diagnoses');
     }
 }

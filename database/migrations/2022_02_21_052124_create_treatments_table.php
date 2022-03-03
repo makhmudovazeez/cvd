@@ -15,8 +15,8 @@ class CreateTreatmentsTable extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('patient_id')->constrained('patients');
-            $table->foreignId('treatment_type_id')->constrained('treatment_types');
             $table->date('from_date');
             $table->date('to_date');
             $table->double('dose');
@@ -24,6 +24,7 @@ class CreateTreatmentsTable extends Migration
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
             $table->softDeletes();
+
             $table->timestamps();
         });
     }

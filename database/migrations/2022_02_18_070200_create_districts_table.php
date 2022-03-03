@@ -15,6 +15,13 @@ class CreateDistrictsTable extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
+
+            $table->string('code')->nullable();
+
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }
