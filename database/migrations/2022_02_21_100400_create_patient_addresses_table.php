@@ -20,7 +20,7 @@ class CreatePatientAddressesTable extends Migration
             $table->foreignId('country_id')->constrained('countries');
             $table->foreignId('state_id')->constrained('states');
             $table->foreignId('city_id')->constrained('cities');
-            $table->foreignId('district_id')->constrained('district');
+            $table->foreignId('district_id')->constrained('districts');
 
             $table->string('postal_code')->nullable();
             $table->text('line');
